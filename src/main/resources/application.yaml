@@ -1,0 +1,31 @@
+spring:
+  config:
+    # settings for local development environment only
+    import: optional:file:.env.properties
+
+  cloud:
+    function:
+      definition: inConsumer
+    stream:
+      function:
+        # require to define functions explicitly
+        autodetect: false
+      binders:
+        kafka-input:
+          type: kafka
+          environment:
+            # https://cloud.spring.io/spring-cloud-stream-binder-kafka/spring-cloud-stream-binder-kafka.html#_kafka_binder_properties
+            spring.cloud.stream.kafka.binder.brokers: ${KAFKA_BOOTSTRAP_SERVERS_LIST}
+      bindings:
+        inConsumer-in-0:
+          binder: kafka-input
+          destination: ${KAFKA_CONSUMER_TOPIC}
+          group: ${KAFKA_CONSUMER_GROUP}
+      kafka:
+        bindings:
+          inConsumer-in-0:
+            #see https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#kafka-consumer-properties
+            consumer:
+              startOffset: earliest
+              # see org.springframework.kafka.listener.ContainerProperties.AckMode
+              ackMode: BATCH
