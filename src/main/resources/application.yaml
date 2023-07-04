@@ -16,11 +16,19 @@ spring:
           environment:
             # https://cloud.spring.io/spring-cloud-stream-binder-kafka/spring-cloud-stream-binder-kafka.html#_kafka_binder_properties
             spring.cloud.stream.kafka.binder.brokers: ${app.kafka.bootstrapServersList}
+        kafka-output:
+          type: kafka
+          environment:
+            # https://cloud.spring.io/spring-cloud-stream-binder-kafka/spring-cloud-stream-binder-kafka.html#_kafka_binder_properties
+            spring.cloud.stream.kafka.binder.brokers: ${app.kafka.bootstrapServersList}
       bindings:
         inConsumer-in-0:
           binder: kafka-input
           destination: ${app.kafka.consumer.topic}
           group: ${app.kafka.consumer.group}
+        producer-out-0:
+          binder: kafka-output
+          destination: ${app.kafka.producer.topic}
       kafka:
         bindings:
           inConsumer-in-0:
@@ -29,3 +37,6 @@ spring:
               startOffset: earliest
               # see org.springframework.kafka.listener.ContainerProperties.AckMode
               ackMode: BATCH
+          producer-out-0:
+            producer:
+              sync: true

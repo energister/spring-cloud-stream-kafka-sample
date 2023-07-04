@@ -12,13 +12,8 @@ fun main(args: Array<String>) {
 
 @SpringBootApplication
 class Application {
-
     @Bean(name = ["inConsumer"])
-    fun consumer(): Consumer<Message<ByteArray>> {
-        return Consumer { process(it) }
-    }
-
-    private fun process(cloudMessage: Message<ByteArray>) {
-        println(cloudMessage)
+    fun consumer(consumer: TopicConsumer): Consumer<Message<ByteArray>> {
+        return Consumer { consumer.handle(it) }
     }
 }
