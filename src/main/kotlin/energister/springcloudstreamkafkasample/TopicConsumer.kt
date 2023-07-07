@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service
 class TopicConsumer(private val producer: Producer) {
     fun handle(cloudMessage: Message<ByteArray>) {
         val messageKey = cloudMessage.headers.get(KafkaHeaders.RECEIVED_KEY, ByteArray::class.java)!!
-        producer.send(cloudMessage.payload, messageKey)
+        producer.send(messageKey, cloudMessage.payload)
     }
 }
