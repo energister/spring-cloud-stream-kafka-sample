@@ -1,7 +1,7 @@
 spring:
   config:
     # settings for local development environment only
-    import: optional:file:application-local.yaml
+    import: optional:file:./duplicator.yaml
 
   cloud:
     function:

@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### Project specific
-application-local.yaml
+/*.yaml
