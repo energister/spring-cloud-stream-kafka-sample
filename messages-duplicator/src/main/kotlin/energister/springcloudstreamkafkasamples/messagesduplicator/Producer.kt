@@ -1,4 +1,4 @@
-package energister.springcloudstreamkafkasamples.duplicator
+package energister.springcloudstreamkafkasamples.messagesduplicator
 
 import mu.KotlinLogging
 import org.springframework.cloud.stream.function.StreamBridge

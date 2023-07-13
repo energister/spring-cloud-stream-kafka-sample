@@ -1,4 +1,4 @@
-package energister.springcloudstreamkafkasamples.duplicator
+package energister.springcloudstreamkafkasamples.messagesduplicator
 
 import org.springframework.kafka.support.KafkaHeaders
 import org.springframework.messaging.Message

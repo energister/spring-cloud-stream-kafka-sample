@@ -7,7 +7,7 @@ on every app start consuming starts from the beginning of the topic regardless o
 
 ### Configuration
 
-The app is configured through the `duplicator.yaml` file which should define following properties:
+The app is configured through the `messages-duplicator.yaml` file which should define following properties:
 * `app.kafka.bootstrapServersList` (comma-separated)
 * `app.kafka.consumer.topic`
 * `app.kafka.consumer.group`
