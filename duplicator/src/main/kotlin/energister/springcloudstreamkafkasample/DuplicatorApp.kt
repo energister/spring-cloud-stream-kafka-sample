@@ -7,11 +7,11 @@ import org.springframework.messaging.Message
 import java.util.function.Consumer
 
 fun main(args: Array<String>) {
-    runApplication<Application>(*args)
+    runApplication<DuplicatorApp>(*args)
 }
 
 @SpringBootApplication
-class Application {
+class DuplicatorApp {
     @Bean(name = ["inConsumer"])
     fun consumer(consumer: TopicConsumer): Consumer<Message<ByteArray>> {
         return Consumer { consumer.handle(it) }
