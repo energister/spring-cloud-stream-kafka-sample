@@ -1,4 +1,4 @@
-package energister.springcloudstreamkafkasample
+package energister.springcloudstreamkafkasamples.duplicator
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
