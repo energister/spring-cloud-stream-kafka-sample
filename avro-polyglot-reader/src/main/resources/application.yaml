@@ -1,0 +1,32 @@
+spring:
+  config:
+    # settings for local development environment only
+    import: optional:file:./avro-polyglot-reader.yaml
+
+  cloud:
+    function:
+      definition: topicConsumer
+    stream:
+      function:
+        # require to define functions explicitly
+        autodetect: false
+      bindings:
+        topicConsumer-in-0:
+          destination: ${app.kafka.consumer.topic}
+          group: ${app.kafka.consumer.group}
+          consumer:
+            # ignore content type, use deserializer directly
+            useNativeDecoding: true
+      kafka:
+        binder:
+          # https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#kafka-binder-properties
+          brokers: ${app.kafka.bootstrapServersList}
+        bindings:
+          topicConsumer-in-0:
+            #see https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#kafka-consumer-properties
+            consumer:
+              resetOffsets: true
+              configuration:
+                schema.registry.url: ${app.kafka.schema.registry.url}
+                key.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+                value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
