@@ -23,6 +23,7 @@ extra["springCloudVersion"] = "2022.0.3"
 
 dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
 	implementation("org.springframework.cloud:spring-cloud-stream")
 	implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka")
 	implementation("io.confluent:kafka-avro-serializer:7.3.2")
