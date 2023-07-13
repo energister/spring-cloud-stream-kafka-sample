@@ -34,7 +34,7 @@ spring:
           inConsumer-in-0:
             #see https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#kafka-consumer-properties
             consumer:
-              startOffset: earliest
+              resetOffsets: true
               # see org.springframework.kafka.listener.ContainerProperties.AckMode
               ackMode: BATCH
           producer-out-0:
