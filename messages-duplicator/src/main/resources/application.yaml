@@ -14,12 +14,16 @@ spring:
         kafka-input:
           type: kafka
           environment:
-            # https://cloud.spring.io/spring-cloud-stream-binder-kafka/spring-cloud-stream-binder-kafka.html#_kafka_binder_properties
-            spring.cloud.stream.kafka.binder.brokers: ${app.kafka.bootstrapServersList}
+            # https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#kafka-binder-properties
+            spring.cloud.stream.kafka.binder:
+              brokers: ${app.kafka.bootstrapServersList}
+              autoCreateTopics: false
+              consumerProperties:
+                allow.auto.create.topics: false
         kafka-output:
           type: kafka
           environment:
-            # https://cloud.spring.io/spring-cloud-stream-binder-kafka/spring-cloud-stream-binder-kafka.html#_kafka_binder_properties
+            # https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#kafka-binder-properties
             spring.cloud.stream.kafka.binder.brokers: ${app.kafka.bootstrapServersList}
       bindings:
         inConsumer-in-0:
